@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +48,8 @@ const Navbar = () => {
 
   const navLinks = (
     <ul className="font-medium flex flex-col md:flex-row lg:space-x-8 sm:space-x-4 space-y-2 md:space-y-0 p-4 md:p-0">
-      <li>
-        <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+      <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <a
           href="#home"
           onClick={(e) => {
             e.preventDefault();
@@ -61,42 +59,45 @@ const Navbar = () => {
           className={`text-white ${activeSection === "home" ? "isActive" : ""}`}
         >
           Home
-        </motion.a>
-      </li>
-      <li>
+        </a>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <a
           href="#services"
           onClick={(e) => {
             e.preventDefault();
             handleCloseMenu();
+            handleScrollTo("services");
           }}
-          className={`text-white ${
+          className={`text-white  ${
             activeSection === "services" ? "isActive" : ""
           }`}
         >
           Services
         </a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <a
           href="#about"
           onClick={(e) => {
             e.preventDefault();
             handleCloseMenu();
+            handleScrollTo("about");
           }}
           className={`text-white ${
             activeSection === "about" ? "isActive" : ""
           }`}
         >
-          About Us
+          About
         </a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <a
           href="#pricing"
           onClick={(e) => {
             e.preventDefault();
             handleCloseMenu();
+            handleScrollTo("pricing");
           }}
           className={`text-white ${
             activeSection === "pricing" ? "isActive" : ""
@@ -104,13 +105,14 @@ const Navbar = () => {
         >
           Pricing
         </a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <a
           href="#testimonial"
           onClick={(e) => {
             e.preventDefault();
             handleCloseMenu();
+            handleScrollTo("testimonial");
           }}
           className={`text-white ${
             activeSection === "testimonial" ? "isActive" : ""
@@ -118,7 +120,7 @@ const Navbar = () => {
         >
           Testimonial
         </a>
-      </li>
+      </motion.li>
     </ul>
   );
   return (
@@ -164,23 +166,31 @@ const Navbar = () => {
       {/* mobile nav items */}
 
       {isOpen && (
-        <nav className="absolute top-full left-0 w-full bg-heroBg z-20 md:hidden">
-          <ul className="flex flex-col p-4 space-y-3 ">
-            {navLinks.props.children}
-            <li className="py-2 list-none">
-              <a
-                href="#contact"
-                className="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded "
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleCloseMenu();
-                }}
-              >
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <AnimatePresence mode="wait">
+          <motion.nav
+            key="dropdown"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
+            className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 mt-4"
+          >
+            <ul className="flex flex-col p-4 space-y-3 ">
+              {navLinks.props.children}
+              <li className="py-2 list-none">
+                <a
+                  href="#contact"
+                  className="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded "
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                  }}
+                >
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </motion.nav>
+        </AnimatePresence>
       )}
     </header>
   );
