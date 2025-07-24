@@ -8,3 +8,9 @@
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Syne", sans-serif;
 }
+
+@layer base {
+  :root {
+    --bg-image: url("/work-proceess.webp");
+  }
+}
