@@ -4,12 +4,20 @@ import serviceImg1 from "../assets/service1.webp";
 import serviceImg2 from "../assets/service2.webp";
 import serviceImg3 from "../assets/service3.webp";
 import serviceImg4 from "../assets/service4.webp";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/animationVariants";
 
 const Services = () => {
   return (
     <div id="services" className="bg-[#f7f8fc]">
       <div className="pt-28 px-4 container mx-auto">
-        <div className="text-center space-y-5">
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+          className="text-center space-y-5"
+        >
           <h2 className="text-3xl font-bold font-secondary text-heroBg">
             What Can We Do Together
           </h2>
@@ -19,17 +27,23 @@ const Services = () => {
             officia cum provident eaque, sunt a tenetur quia soluta, sed tempore
             illo iste.
           </p>
-        </div>
+        </motion.div>
 
         {/* service category */}
         <div className="py-12 lg:w-4/5 mx-auto">
           <Tabs>
-            <TabList className="flex flex-wrap justify-between flex-col md:flex-col lg:flex-row items-center gap-4 mb-8">
+            <motion.TabList
+              variants={fadeIn("up", 0.3)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+              className="flex flex-wrap justify-between flex-col md:flex-col lg:flex-row items-center gap-4 mb-8"
+            >
               <Tab>Couple Counseling</Tab>
               <Tab>Parenting Skills</Tab>
               <Tab>Felling Stuck</Tab>
               <Tab>Self-Confidence</Tab>
-            </TabList>
+            </motion.TabList>
 
             <TabPanel className="flex flex-col justify-center items-center lg:flex-row gap-8">
               <div className=" md:w-2/3 lg:w-1/2 bg-white rounded-lg p-12 font-secondary">

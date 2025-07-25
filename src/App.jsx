@@ -1,5 +1,7 @@
 import "./App.css";
 import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import Hero from "./components/HEro";
 import Navbar from "./components/Navbar";
 import Pricing from "./components/Pricing";
@@ -17,6 +19,8 @@ function App() {
       <WorkingStep></WorkingStep>
       <Pricing></Pricing>
       <Testimonial></Testimonial>
+      <Contact></Contact>
+      <Footer></Footer>
     </div>
   );
 }

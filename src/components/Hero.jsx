@@ -1,6 +1,8 @@
 import React from "react";
 import heroImg from "../assets/hero.webp";
 import { IoArrowForwardCircle } from "react-icons/io5";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/animationVariants";
 
 const Hero = () => {
   return (
@@ -10,7 +12,13 @@ const Hero = () => {
     >
       <div className="container text-center md:text-left mx-auto flex flex-col md:flex-row items-center  justify-center p-8 overflow-y-hidden gap-12  h-full">
         {/* Left Side */}
-        <div className=" w-full md:w-1/2">
+        <motion.div
+          variants={fadeIn("down", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+          className=" w-full md:w-1/2"
+        >
           <h1 className="text-3xl font-secondary font-bold mb-4 md:w-3/5 leading-snug">
             Start Your Journey to Mental Wellness
           </h1>
@@ -27,12 +35,18 @@ const Hero = () => {
               <IoArrowForwardCircle />
             </a>
           </button>
-        </div>
+        </motion.div>
 
         {/* Right Side */}
-        <div className=" w-full h-full flex justify-center md:justify-end  items-baseline md:w-2/5 ">
+        <motion.div
+          variants={fadeIn("left", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+          className=" w-full h-full flex justify-center md:justify-end  items-baseline md:w-2/5 "
+        >
           <img src={heroImg} alt="Hero img" className="w-3/4 object-cover" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
