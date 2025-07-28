@@ -160,7 +160,7 @@ const Services = () => {
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: false, amount: 0.7 }}
-                className="flex flex-col justify-center items-center lg:flex-row gap-8"
+                className="flex flex-col justify-center items-center lg:flex-row gap-8 w-auto"
               >
                 <div className="md:w-2/3 lg:w-1/2 bg-white rounded-lg p-12 font-secondary">
                   <h3 className="text-3xl font-semibold text-primary mb-4">
