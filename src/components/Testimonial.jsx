@@ -44,7 +44,7 @@ const Testimonial = () => {
                 <BsFillChatQuoteFill className="size-12 text-primary" />
               </div>
 
-              <div className="flex flex-col space-y-3 mb-4">
+              <div className="flex flexv   -col space-y-3 mb-4">
                 <p className="text-lg mb-2">{testimonial.review}</p>
                 <div className="flex gap-1">
                   <img
